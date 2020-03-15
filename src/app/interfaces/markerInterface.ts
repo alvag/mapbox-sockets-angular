@@ -1,6 +1,6 @@
-export interface LugarInterface {
+export interface MarkerInterface {
     id: string;
-    nombre: string;
+    name: string;
     lng: number;
     lat: number;
     color: string;

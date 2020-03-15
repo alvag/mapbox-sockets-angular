@@ -3,16 +3,24 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MapComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+const config: SocketIoConfig = { url: environment.wsUrl, options: {} };
+
+
+@NgModule( {
+    declarations: [
+        AppComponent,
+        MapComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        SocketIoModule.forRoot( config ),
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+} )
+export class AppModule {}
